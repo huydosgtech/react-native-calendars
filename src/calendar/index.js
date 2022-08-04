@@ -83,6 +83,10 @@ class Calendar extends Component {
     onPressArrowLeft: PropTypes.func,
     /** Handler which gets executed when press arrow icon right. It receive a callback can go next month */
     onPressArrowRight: PropTypes.func,
+    /** Handler which gets executed when press arrow icon left. It receive a callback can go back month */
+    onPressArrowLeftImage: PropTypes.func,
+    /** Handler which gets executed when press arrow icon right. It receive a callback can go next month */
+    onPressArrowRightImage: PropTypes.func,
     /** Disable left arrow. Default = false */
     disableArrowLeft: PropTypes.bool,
     /** Disable right arrow. Default = false */
@@ -381,6 +385,8 @@ class Calendar extends Component {
       weekNumbers: this.props.showWeekNumbers,
       onPressArrowLeft: this.props.onPressArrowLeft,
       onPressArrowRight: this.props.onPressArrowRight,
+      onPressArrowLeftImage: this.props.onPressArrowLeftImage,
+      onPressArrowRightImage: this.props.onPressArrowRightImage,
       webAriaLevel: this.props.webAriaLevel,
       disableArrowLeft: this.props.disableArrowLeft,
       disableArrowRight: this.props.disableArrowRight,

@@ -24,6 +24,8 @@ class CalendarHeader extends Component {
     weekNumbers: PropTypes.bool,
     onPressArrowLeft: PropTypes.func,
     onPressArrowRight: PropTypes.func,
+    onPressArrowLefImage: PropTypes.func,
+    onPressArrowRightImage: PropTypes.func,
     disableArrowLeft: PropTypes.bool,
     disableArrowRight: PropTypes.bool,
     webAriaLevel: PropTypes.number,
@@ -94,6 +96,22 @@ class CalendarHeader extends Component {
     const {onPressArrowRight, month} = this.props;
     if (typeof onPressArrowRight === 'function') {
       return onPressArrowRight(this.addMonth, month);
+    }
+    return this.addMonth();
+  }
+
+  onPressLeftImage = () => {
+    const {onPressArrowLeftImage, month} = this.props;
+    if (typeof onPressArrowLeftImage === 'function') {
+      onPressArrowLeftImage(month);
+    }
+    return this.subtractMonth();
+  }
+
+  onPressRightImage = () => {
+    const {onPressArrowRightImage, month} = this.props;
+    if (typeof onPressArrowRightImage === 'function') {
+      onPressArrowRightImage(month);
     }
     return this.addMonth();
   }
@@ -186,8 +204,8 @@ class CalendarHeader extends Component {
       );
       leftArrowImage = (
         <TouchableOpacity
-          hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
-          onPress={this.subtractMonth}
+          hitSlop={{left: 20, top: 20, bottom: 20}}
+          onPress={this.onPressLeftImage}
           style={this.style.arrow}
         >
           <Image
@@ -198,8 +216,8 @@ class CalendarHeader extends Component {
       );
       rightArrowImage = (
         <TouchableOpacity 
-          hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
-          onPress={this.addMonth} 
+          hitSlop={{right: 20, top: 20, bottom: 20}}
+          onPress={this.onPressRightImage} 
           style={this.style.arrow}>
           <Image
             source={require('../img/next.png')}
