@@ -30,6 +30,17 @@ export default function(theme={}) {
     arrow: {
       ...appStyle.arrowStyle
     },
+    arrowLeftImage: {
+      ...appStyle.arrowLeftStyle
+    },
+    arrowRightImage: {
+      ...appStyle.arrowRightStyle
+    },
+    arrowImageStyle: {
+      tintColor: appStyle.arrowColor,
+      width: appStyle.arrowWidthImage,
+      height: appStyle.arrowHeightImage
+    },
     arrowImage: {
       tintColor: appStyle.arrowColor,
       ...Platform.select({

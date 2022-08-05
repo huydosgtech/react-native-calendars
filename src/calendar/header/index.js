@@ -164,8 +164,6 @@ class CalendarHeader extends Component {
   render() {
     let leftArrow = <View/>;
     let rightArrow = <View/>;
-    let leftArrowImage = <View />;
-    let rightArrowImage = <View />;
     let weekDaysNames = weekDayNames(this.props.firstDay);
     const {testID} = this.props;
 
@@ -202,30 +200,6 @@ class CalendarHeader extends Component {
             />}
         </TouchableOpacity>
       );
-      leftArrowImage = (
-        <TouchableOpacity
-          hitSlop={{left: 20, top: 20, bottom: 20}}
-          onPress={this.onPressLeftImage}
-          style={this.style.arrow}
-        >
-          <Image
-            source={require('../img/previous.png')}
-            style={this.style.arrowImage}
-          />
-        </TouchableOpacity>
-      );
-      rightArrowImage = (
-        <TouchableOpacity 
-          hitSlop={{right: 20, top: 20, bottom: 20}}
-          onPress={this.onPressRightImage} 
-          style={this.style.arrow}>
-          <Image
-            source={require('../img/next.png')}
-            style={this.style.arrowImage}
-          />
-        </TouchableOpacity>
-      );
-
     }
 
     let indicator;
@@ -253,9 +227,25 @@ class CalendarHeader extends Component {
             {rightArrow}
           </View>
           <View style={this.style.viewDirection}>
-            {leftArrowImage}
-            <View style={{width: 20}}/>
-            {rightArrowImage}
+            <TouchableOpacity
+              hitSlop={{ left: 20, top: 20, bottom: 20 }}
+              onPress={this.onPressLeftImage}
+              style={this.style.arrowLeftImage}
+            >
+              <Image
+                source={require('../img/previous.png')}
+                style={this.style.arrowImageStyle}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              hitSlop={{ right: 20, top: 20, bottom: 20 }}
+              onPress={this.onPressRightImage}
+              style={this.style.arrowRightImage}>
+              <Image
+                source={require('../img/next.png')}
+                style={this.style.arrowImageStyle}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         {!this.props.hideDayNames &&
